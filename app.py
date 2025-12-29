@@ -28,7 +28,7 @@ st.set_page_config(
 load_dotenv()
 
 # ==========================================
-# 🛠️ CSS FOR RTL (ARABIC) - FIXED
+# 🛠️ CSS FOR RTL (ARABIC) - FIXED TITLE
 # ==========================================
 st.markdown("""
 <style>
@@ -38,20 +38,25 @@ st.markdown("""
         text-align: right;
     }
 
-    /* 2. Fix Text Alignment for Markdown (Paragraphs & Headers) */
-    .stMarkdown p, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6 {
+    /* 2. Fix ALL Headers (st.title, st.header, st.subheader) */
+    h1, h2, h3, h4, h5, h6 {
         direction: rtl !important;
         text-align: right !important;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* 3. Fix Chat Input (User typing area) */
+    /* 3. Fix Text Alignment for Markdown Paragraphs */
+    .stMarkdown p {
+        direction: rtl !important;
+        text-align: right !important;
+    }
+
+    /* 4. Fix Chat Input (User typing area) */
     .stChatInput textarea {
         direction: rtl !important;
         text-align: right !important;
     }
 
-    /* 4. Fix Chat Messages (User & Assistant bubbles) */
+    /* 5. Fix Chat Messages (User & Assistant bubbles) */
     .stChatMessage {
         direction: rtl !important;
         text-align: right !important;
@@ -63,7 +68,7 @@ st.markdown("""
         margin-right: 0;
     }
 
-    /* 5. Fix Lists (Bullets being on the wrong side) */
+    /* 6. Fix Lists (Bullets being on the wrong side) */
     ul, ol {
         direction: rtl !important;
         text-align: right !important;
@@ -71,17 +76,17 @@ st.markdown("""
         margin-left: 0 !important;
     }
 
-    /* 6. Fix Images to align Right */
+    /* 7. Fix Images to align Right */
     img {
         display: block;
-        margin-right: 0 !important; /* Start of line in RTL */
-        margin-left: auto !important; /* Push to left */
+        margin-right: 0 !important; 
+        margin-left: auto !important; 
     }
     
-    /* 7. Fix Expander/Accordion text */
-    .streamlit-expanderHeader {
-        direction: rtl;
-        text-align: right;
+    /* 8. Fix Captions and small text */
+    .stCaption {
+        direction: rtl !important;
+        text-align: right !important;
     }
 </style>
 """, unsafe_allow_html=True)
