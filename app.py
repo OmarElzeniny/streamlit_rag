@@ -121,7 +121,7 @@ def get_rag_chain():
         vectorstore=vectorstore, 
         docstore=store, 
         id_key="doc_id", 
-        search_kwargs={"k": 8} 
+        search_kwargs={"k": 10} 
     )
 
     llm = ChatGoogleGenerativeAI(
