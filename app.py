@@ -27,33 +27,61 @@ st.set_page_config(
 )
 load_dotenv()
 
-# --- CSS FOR RTL (ARABIC) ---
+# ==========================================
+# 🛠️ CSS FOR RTL (ARABIC) - FIXED
+# ==========================================
 st.markdown("""
 <style>
-    /* Force Right-to-Left for the entire app */
+    /* 1. Global RTL for the main container */
     .stApp {
         direction: rtl;
         text-align: right;
     }
-    
-    /* Adjust chat input to align right */
+
+    /* 2. Fix Text Alignment for Markdown (Paragraphs & Headers) */
+    .stMarkdown p, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6 {
+        direction: rtl !important;
+        text-align: right !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* 3. Fix Chat Input (User typing area) */
     .stChatInput textarea {
-        direction: rtl;
-        text-align: right;
+        direction: rtl !important;
+        text-align: right !important;
+    }
+
+    /* 4. Fix Chat Messages (User & Assistant bubbles) */
+    .stChatMessage {
+        direction: rtl !important;
+        text-align: right !important;
     }
     
-    /* Ensure markdown lists (bullets) align right */
-    .stMarkdown ul, .stMarkdown ol {
-        direction: rtl;
-        text-align: right;
-        padding-right: 20px; 
+    /* Ensure the Avatar is on the Right side for RTL */
+    .stChatMessage .stChatMessageAvatar {
+        margin-left: 10px;
+        margin-right: 0;
     }
-    
-    /* Fix Image alignment */
+
+    /* 5. Fix Lists (Bullets being on the wrong side) */
+    ul, ol {
+        direction: rtl !important;
+        text-align: right !important;
+        margin-right: 20px !important;
+        margin-left: 0 !important;
+    }
+
+    /* 6. Fix Images to align Right */
     img {
         display: block;
-        margin-right: 0;
-        margin-left: auto;
+        margin-right: 0 !important; /* Start of line in RTL */
+        margin-left: auto !important; /* Push to left */
+    }
+    
+    /* 7. Fix Expander/Accordion text */
+    .streamlit-expanderHeader {
+        direction: rtl;
+        text-align: right;
     }
 </style>
 """, unsafe_allow_html=True)
